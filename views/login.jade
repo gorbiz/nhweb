@@ -1,0 +1,43 @@
+extends layout.jade
+block content
+	div(class='jumbotron')
+		h1 Welcome to #{name}!
+		p To play, sign in or up below :)
+	div(class='row')
+		div(class='col-xs-6')
+			form(action='/login', method='post')
+				div(class='form-group')
+					fieldset
+						legend Log in
+						if login_error
+							div(class='form-group has-error')
+								span(class='help-block') #{login_error}
+						div.form-group
+							label(for='login_user') Username
+							input(type='input' class='form-control' name='login_user' id='login_user' maxlength='10' placeholder='Username')
+						div.form-group
+							label(for='login_pass') Password
+							input(type='password' class='form-control' name='login_pass' id='login_pass' placeholder='Password')
+				button(type='submit', class=['btn', 'btn-default']) Log in!
+		div(class='col-xs-6')
+			form(action='/signup', method='post', onsubmit='return signup_ok()')
+				div(class='form-group')
+					fieldset
+						legend Sign up
+						if signup_error
+							div(class='form-group has-error')
+								span(class='help-block') #{signup_error}
+						div.form-group
+							label(for='signup_user') Username
+							input(type='input' class='form-control' name='signup_user' id='signup_user' maxlength='10' placeholder='Desired username')
+						div.form-group
+							label(for='signup_email') E-mail
+							input(type='input' class='form-control' name='signup_email' id='signup_email' placeholder='Your e-mail (not really used)')
+						div.form-group
+							div(class='form-group' id='signup_passwords')
+								label(class='control-label' for='signup_pass') Password
+								input(type='password' oninput='pass_change()' class='form-control' name='signup_pass' id='signup_pass' placeholder='Password')
+								label(class='control-label' for='signup_pass_2') Password again
+								input(type='password' oninput='pass_change()' class='form-control' id='signup_pass_2' placeholder='Password again')
+								span(id='signup_error' class='help-block')
+				button(type='submit', class=['btn', 'btn-default']) Sign up!

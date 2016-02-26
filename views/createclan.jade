@@ -1,0 +1,49 @@
+extends layout.jade
+block content
+	div.content
+		div.row
+			div.col-xs-6
+				form(action='/insertclan', method='post')
+					div.form-group
+						fieldset
+							legend Create clan
+							div.form-group
+								label(for='clan_name') Clan name (Max 16 Characters)
+								input(type='input' class='form-control' name='clan_name' id='clan_name' maxlength='16' placeholder='Clan name')
+
+							div.form-group
+								label(for='clan_logo') Logo (Animated gifs allowed)
+								input(type='file' name='clan_logo' accept='image/*' id='clan_logo', onchange='preview_image(event);')
+								p.help-block Can logos will be rendered as 64x64.
+
+							div.form-group
+								label(for='clan_logo_preview') Logo preview
+								br
+								img(id='clan_logo_preview', width='64px', height='64px')
+
+							label(for='clan_slots') Slot configuration
+							div.form-inline(id='clan_slots')
+								div.form-group
+									button.btn.btn-default.btn-slot(type='button', disabled='disabled') #{username}
+								div.form-group
+									button.btn.btn-default.btn-success.btn-slot(id='btn_slot0', type='button', onclick='toggle_slot("slot0");') Open
+									input(id='slot0', type='hidden', name='slot0', value='open')
+								div.form-group
+									button.btn.btn-default.btn-success.btn-slot(id='btn_slot1', type='button', onclick='toggle_slot("slot1");') Open
+									input(id='slot1', type='hidden', name='slot1', value='open')
+								div.form-group
+									button.btn.btn-default.btn-success.btn-slot(id='btn_slot2', type='button', onclick='toggle_slot("slot2");') Open
+									input(id='slot2', type='hidden', name='slot2', value='open')
+								div.form-group
+									button.btn.btn-default.btn-success.btn-slot(id='btn_slot3', type='button', onclick='toggle_slot("slot3");') Open
+									input(id='slot3', type='hidden', name='slot3', value='open')
+								p.help-block Open slots can be joined by anyone, Request slots require your authorization before joining.
+
+					button(type='submit', class=['btn', 'btn-default, btn-primary']) Create it!
+			div.col-xs-6
+				div.jumbotron
+					h1 Clan creation
+					p Please consider joining a clan before creating one. Clans may have open slots, which are free for anyone to join.
+
+					p <a href="/joinclan">Click here</a> to look for a clan to join instead.
+

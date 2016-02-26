@@ -1,0 +1,55 @@
+extends layout.jade
+block content
+	div.row
+		div.col-xs-6
+			h1 Clan Information
+			if 0 == clan.length
+				p 
+					b You are currently not part of a clan.
+
+				p You can either <a href="/joinclan">look for one to join</a> or <a href="/createclan">create a new clan</a> if you don't find one you like.
+			else 
+				h2= clan[0].clan_name
+				if game
+					p Registered for game #{game.name}.
+				else
+					p
+						b Not registered with any tournament.
+				table.table.table-hover.table-striped
+					thead
+						tr
+							th Name
+							th Slot
+							th Action
+					tbody
+						each it in clan
+							tr
+								td
+									if userid == it.owner_id
+										b= it.player_name
+									else
+										#{it.player_name}
+								td.col-md-3(id='slot_' + it.slot_id)= it.slot_type.charAt(0).toUpperCase() + it.slot_type.substring(1)
+								td
+									if it.slot_type != 'filled'
+										button.btn.btn-default.btn-primary(type='button', value=it.slot_type, disabled=(userid!=it.owner_id), onclick='toggle_slot(this, ' + it.slot_id + ');') Toggle
+									else if userid == it.player_id
+										button.btn.btn-default.btn-danger(type='button',onclick='clan_leave();') Leave
+									else	
+										button.btn.btn-default.btn-warning(type='button', disabled=(userid!=it.owner_id), onclick='remove_player(' + it.player_id + ');') Remove
+				h2 Join Requests
+				p All times are in your local time-zone.
+				table.table.table-hover.table-striped
+					thead
+						tr
+							th Name
+							th Play schedule
+							th Action
+					tbody
+
+		div.col-xs-6
+			div.jumbotron
+				h1 Hello #{username}!
+				p Here you can manage your clan and account details.
+
+			h1 Account Information

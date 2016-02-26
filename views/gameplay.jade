@@ -1,0 +1,56 @@
+extends layout.jade
+block content
+	div.row
+		div.col-xs-6
+			h2 Game play
+			p In #{name}, you create or join a team of up to 5 players, and then together compete against other teams for victory. No individual score is tracked, the only thing that counts is how well your team does as a unit. The score model has been balanced to encourage team-play as much a possible, giving significantly greater score if your entire team does well than if a single individual does.
+
+			p See <a href="/score">Score</a> for more details.
+
+			h2 Modifications and new stuff
+			p The alterations made to Nethack have been kept to an absolute minimum, adding only what was necessary to make it team-based. Aside from a bunch of interprocess interaction and database logic, only three changes were made.
+
+			h3 The Warpstone
+			p The Warpstone is the primary team-play element in #{name}. It allows players within the same team to send items between each other. All races spawn with the warpstone already in their possession.
+
+			p You start of with one charge, but it can be recharged infinitively; A blessed scroll of charging having a 50-50 chance of either 1 or 2 charges, an uncursed scroll adds 1 charge, and a cursed one consumes all charges.
+			
+			p You are not allowed to warp any of your starting equipment. This is to prevent start-scumming, as some races start with really strong equipment (think Wizard). Warping artifacts or invocation items is also not allowed, but aside from that, every other item can be warped.
+			
+			h3 Cross-dimensional pager
+			p To ease communication between teams, all races start with a pager. The pager allows you to communicate with your team members in real-time. It also makes announcements about game play elements, such as curses.
+			
+			h3 Curses
+			p Once a team grows strong enough, it can choose to curse another team. To grow in strength a team has to donate money to a priest. Donations above 800*XL will go into a team-shared money pool.
+
+			p When a team has donated 250,000 in total towards this goal, it can curse another team using <b>#curse</b>. Cursing another team will give that team 20 turns to prepare for the curse before <b>The Wrath of Demogorgon</b>, a red gem, is delivered to all players in the cursed team.
+			
+			p Receiving <b>The Wrath of Demogorgon</b>, or picking it up from the ground, will penalize the player in the following ways:
+			
+			ul
+				li
+					b Hitpoints reduced to 1
+				li
+					b Hunger set to weak
+				li
+					b Ill 
+					| (Random between Con and 20 turns to live).
+				li 
+					b Hallucination 
+					| (100 turns).
+				li
+					b Blind 
+					| (100 turns).
+				li
+					b Stunned 
+					| (30 turns).
+				li
+					b Both legs are wounded
+
+			p At first glance it may appear over-powered, but most members of a well-prepared team should be able to live through it. The team that invoked the curse gains score for each player that died, either directly from the curse, or within 30 turns of it being delivered.
+
+			p As for the team being cursed, if you survive and ascending with <b>The Wrath of Demogorgon</b> in your open inventory you gain score.
+		div.col-xs-6
+			div.jumbotron
+				h1 Game Format
+				p #{name} is a team vs. team mod of vanilla Nethack (based on version 3.6.0).

@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/pellsson/nhweb#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "jade": "^1.11.0"
   }
 }

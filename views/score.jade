@@ -1,0 +1,32 @@
+extends layout.jade
+block content
+	div.row
+		div.col-xs-6
+			h1 Score System
+			p There are several objectives in #{name}, all listed in the table on the right.
+			
+			p Each time you or a member of your team complete an objective, the assigned <b>Score</b> value is added to your team. When an objective is completed, the completing players reward divider is increased by <b>Decrease rate</b> for that objective.
+
+			p For example, the first time you complete <b>Reach Minetown</b> your team is awarded 1,000 points, and your reward divider in increased to 5. The second time you complete <b>Reach Minetown</b>, your team is only awarded 1,000/5 (200) points, and your reward divider is increased to 10.
+			
+			p The idea here is to incite players to help their team, instead of trying to single play the game. If we look at the math, the first time a player ascends, completing all objectives, the team is awarded #{score_first}. The second time around however, the same effort only rewards #{score_second} points.
+			
+			p Note that some objectives can be completed <b>Once only</b>.
+		div.col-xs-6
+			h1 Objectives
+			table.table.table-hover.table-striped
+				thead
+					tr
+						th Objective
+						th Score 
+						th Decrease rate
+						th Once only
+				tbody
+					each it in objectives
+						tr
+							td= it.literal
+							td= it.score
+							td= it.decrease_rate
+							td
+								button(class=['btn', 'btn-default', it.repeatable ? 'btn-success' : 'btn-danger' ], disabled='disabled')= it.repeatable ? 'False' : 'True'
+

@@ -1,0 +1,56 @@
+<htmnl>
+<head>
+	<title>Game Format</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<h1>Game Format</h1>
+	<h2>Game play</h2>
+	<p>
+		$TN is a team vs. team mod of vanilla Nethack (currently running version 3.6.0).
+	</p>
+	<p>
+		In $TN, you create or join a team of up to 5 players, and then together compete against other teams for victory. No individual score is tracked, the only thing that counts is how well your team as a unit. Score model has been balanced to encourage team-play as much a possible, giving significantly greater score rewards if your entire team does well than if a single individual does.
+	</p>
+	<p>
+		See <a href="/score">Score</a> for more details.
+	</p>
+
+	<h2>Modifications and new stuff</h2>
+	<p>
+		The alterations made to Nethack have been kept to an absolute minimum, adding only what was necessary to make it team-based. Aside from a bunch of interprocess interaction and database logic, only three changes were made.
+	</p>
+	<h3>The Warpstone</h3>
+	<p>
+		The Warpstone is the primary team-play element in $TN. It allows players within the same team to send items between each other. All races spawn with the warpstone already in their possession. It can be recharged infinitively; A blessed scroll of charging having a 50-50 chance of either 1 or 2 charges, an uncursed scroll adds 1 charge, and a cursed one consumes all charges.
+	</p>
+	<p>
+		You are not allowed to warp any of your starting equipment. This is to prevent start-scumming, as some races start with really strong equipment (think Wizard). Warping artifacts or invocation items is also not allowed, but aside from that, everything can be warped (including wand of wishing).
+	</p>
+	<h3>Cross-dimensional pager</h3>
+	<p>
+		To ease communication between teams, all races start with a pager. The pager allows you to communicate with other team members in real-time. It also makes announcements about game play elements, such as curses.
+	</p>
+	<h3>Curses</h3>
+	<p>
+		Once a team grows strong enough, it can choose to curse another team. To grow in strength the team has to donate money (to a priest). Donations above 800*XL will go into a team-shared money pool.
+	</p>
+	<p>
+		When a team has donated 250,000 in total towards this goal, it can curse another team using <b>#curse</b>. Cursing another team will give that team 20 turns to prepare for the curse before <b>The Wrath of Demogorgon</b>, a red gem, is delivered to all players of the cursed team.
+	</p>
+	<p>
+		Receiving The Wrath of Demogorgon, or picking it up from the ground, will penalize the player in the following ways:
+		<ul>
+			<li><b>Hallucination</b> (100 turns).</li>
+			<li><b>Blind</b> (100 turns).</li>
+			<li><b>Stunned</b> (30 turns).</li>
+			<li><b>Ill</b> (Random between Con and 20 turns to live).
+			<li><b>Both legs are wounded</b></li>
+			<li><b>Hitpoints reduced to 1</b></li>
+			<li><b>Hunger set to weak</b></li>
+		</ul>
+	</p>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
