@@ -1,10 +1,9 @@
 extends layout.jade
-- clan = clan || []
 block content
 	div.row
 		div.col-xs-6
 			h1 Clan Information
-			if 0 == clan.length
+			if 0 == (clan || []).length
 				p 
 					b You are currently not part of a clan.
 
