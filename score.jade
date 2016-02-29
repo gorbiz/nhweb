@@ -22,7 +22,7 @@ block content
 						th Decrease rate
 						th Once only
 				tbody
-					each it in objectives
+					each it in (objectives || [])
 						tr
 							td= it.literal
 							td= it.score
